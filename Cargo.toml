@@ -1,0 +1,11 @@
+[package]
+name = "again"
+version = "0.1.0"
+edition = "2021"
+description = "See what commands you run again and again"
+authors = ["Vadim Komisarchik"]
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+chrono = "0.4"
+dirs = "5"
