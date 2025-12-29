@@ -132,19 +132,21 @@ fn parse_since(since: &str) -> Option<DateTime<Local>> {
         "all" => None,
         s => {
             // Try parsing as number of days
-            s.parse::<i64>()
-                .ok()
-                .map(|days| now - Duration::days(days))
+            s.parse::<i64>().ok().map(|days| now - Duration::days(days))
         }
     }
 }
 
-fn filter_entries(entries: Vec<HistoryEntry>, cutoff: Option<DateTime<Local>>, cli: &Cli) -> Vec<String> {
-    let noise = vec![
-        "ls", "cd", "clear", "pwd", "exit", "history", "which", "echo",
-        "cat", "less", "more", "head", "tail", "man", "again",
-    ];
+const NOISE_COMMANDS: &[&str] = &[
+    "ls", "cd", "clear", "pwd", "exit", "history", "which", "echo", "cat", "less", "more", "head",
+    "tail", "man", "again",
+];
 
+fn filter_entries(
+    entries: Vec<HistoryEntry>,
+    cutoff: Option<DateTime<Local>>,
+    cli: &Cli,
+) -> Vec<String> {
     entries
         .into_iter()
         .filter(|e| {
@@ -167,8 +169,11 @@ fn filter_entries(entries: Vec<HistoryEntry>, cutoff: Option<DateTime<Local>>, c
 
             // Filter noise
             if cli.no_noise {
-                let first_word = cmd.split_whitespace().next().unwrap_or("");
-                if noise.contains(&first_word) {
+                if let Some(prefix) = normalized_command_prefix(cmd) {
+                    if NOISE_COMMANDS.contains(&prefix.as_str()) {
+                        return false;
+                    }
+                } else {
                     return false;
                 }
             }
@@ -225,20 +230,15 @@ fn print_grouped(counts: Vec<(String, u32)>, cli: &Cli) {
             continue;
         }
 
-        let prefix = cmd
-            .split_whitespace()
-            .next()
-            .unwrap_or("other")
-            .to_string();
-
-        groups.entry(prefix).or_default().push((cmd, count));
+        let (prefix, rest) = command_name_and_rest(&cmd);
+        groups.entry(prefix).or_default().push((rest, count));
     }
 
     // Sort groups by total count
     let mut group_totals: Vec<_> = groups
         .iter()
         .map(|(prefix, cmds)| {
-            let total: u32 = cmds.iter().map(|(_, c)| c).sum();
+            let total: u32 = cmds.iter().map(|(_, c)| *c).sum();
             (prefix.clone(), total)
         })
         .collect();
@@ -248,8 +248,7 @@ fn print_grouped(counts: Vec<(String, u32)>, cli: &Cli) {
         println!("\n{} ({}x)", prefix, total);
 
         if let Some(cmds) = groups.get(&prefix) {
-            for (cmd, count) in cmds.iter().take(5) {
-                let rest = cmd.strip_prefix(&prefix).unwrap_or(cmd).trim();
+            for (rest, count) in cmds.iter().take(5) {
                 let display = if rest.is_empty() { "(bare)" } else { rest };
                 let truncated = if display.len() > 50 {
                     format!("{}...", &display[..47])
@@ -259,5 +258,97 @@ fn print_grouped(counts: Vec<(String, u32)>, cli: &Cli) {
                 println!("    {:>3}x  {}", count, truncated);
             }
         }
+    }
+}
+
+fn normalized_command_prefix(command: &str) -> Option<String> {
+    command
+        .split_whitespace()
+        .next()
+        .map(|token| normalize_command_token(token))
+}
+
+fn normalize_command_token(token: &str) -> String {
+    let trimmed = token.trim_matches(|c| c == '"' || c == '\'');
+    if trimmed.is_empty() {
+        return "other".to_string();
+    }
+
+    trimmed
+        .rsplit(|c| c == '/' || c == '\\')
+        .next()
+        .unwrap_or(trimmed)
+        .to_string()
+}
+
+fn command_name_and_rest(command: &str) -> (String, String) {
+    let mut parts = command.split_whitespace();
+    if let Some(raw_prefix) = parts.next() {
+        let normalized = normalize_command_token(raw_prefix);
+        let rest = parts.collect::<Vec<_>>().join(" ");
+        (normalized, rest)
+    } else {
+        ("other".to_string(), String::new())
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn base_cli() -> Cli {
+        Cli {
+            pattern: None,
+            min: 2,
+            since: "week".to_string(),
+            limit: 15,
+            group: false,
+            no_noise: false,
+        }
+    }
+
+    #[test]
+    fn normalize_command_token_removes_paths() {
+        assert_eq!(normalize_command_token("/usr/bin/git"), "git");
+        assert_eq!(
+            normalize_command_token("C:\\Program Files\\Git\\bin\\git.exe"),
+            "git.exe"
+        );
+        assert_eq!(normalize_command_token("./scripts/deploy"), "deploy");
+    }
+
+    #[test]
+    fn command_name_and_rest_handles_path_prefix() {
+        let (prefix, rest) = command_name_and_rest("/usr/local/bin/python manage.py runserver");
+        assert_eq!(prefix, "python");
+        assert_eq!(rest, "manage.py runserver");
+
+        let (prefix, rest) = command_name_and_rest("git status -sb");
+        assert_eq!(prefix, "git");
+        assert_eq!(rest, "status -sb");
+    }
+
+    #[test]
+    fn noise_filter_ignores_commands_with_path_prefix() {
+        let entries = vec![
+            HistoryEntry {
+                command: "/bin/ls -la".to_string(),
+                timestamp: None,
+            },
+            HistoryEntry {
+                command: "/usr/bin/cd projects".to_string(),
+                timestamp: None,
+            },
+            HistoryEntry {
+                command: "git status".to_string(),
+                timestamp: None,
+            },
+        ];
+
+        let mut cli = base_cli();
+        cli.no_noise = true;
+
+        let filtered = filter_entries(entries, None, &cli);
+        assert_eq!(filtered, vec!["git status".to_string()]);
     }
 }
