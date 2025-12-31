@@ -112,4 +112,29 @@ mod tests {
 ### Shipping the Swift status bar wrapper
 1. Build via `cd statusbar && swift build`
 2. Run with `swift run again-statusbar`
-3. The wrapper shells out to the installed `again` binary (`cargo install --path .`)
+3. Build `.app` bundle: `cd statusbar && ./build-app.sh`
+4. Install to Applications: `cp -r statusbar/AgainStatusBar.app /Applications/`
+5. The wrapper shells out to the installed `again` binary (`cargo install --path .`)
+
+## Gitignore
+
+The repository uses a combined `.gitignore` for both Rust and Swift:
+
+```
+# Rust
+/target          # Cargo build output
+Cargo.lock       # Lock file (for binaries, not libraries)
+
+# Swift
+.build/          # Swift Package Manager build output
+.swiftpm/        # SPM workspace data
+*.xcodeproj/     # Xcode project files
+DerivedData/     # Xcode build cache
+*.app/           # Built application bundles
+
+# macOS
+.DS_Store        # Finder metadata
+*.dSYM/          # Debug symbols
+```
+
+**When adding new build artifacts or tooling, update `.gitignore` accordingly.**
