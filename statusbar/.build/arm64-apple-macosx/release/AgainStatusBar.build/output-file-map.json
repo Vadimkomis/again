@@ -1,0 +1,25 @@
+{
+  "": {
+    "dependencies": "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/AgainStatusBar.d",
+    "object": "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/AgainStatusBar.o",
+    "swift-dependencies": "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/master.swiftdeps"
+  },
+  "/Users/vadimkomisarchik/Development/again/statusbar/Sources/AppDelegate.swift": {
+    "object": "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/AppDelegate.swift.o",
+    "swiftmodule": "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/AppDelegate~partial.swiftmodule",
+    "swift-dependencies": "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/AppDelegate.swiftdeps",
+    "diagnostics": "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/AppDelegate.dia"
+  },
+  "/Users/vadimkomisarchik/Development/again/statusbar/Sources/StatusBarController.swift": {
+    "object": "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/StatusBarController.swift.o",
+    "swiftmodule": "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/StatusBarController~partial.swiftmodule",
+    "swift-dependencies": "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/StatusBarController.swiftdeps",
+    "diagnostics": "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/StatusBarController.dia"
+  },
+  "/Users/vadimkomisarchik/Development/again/statusbar/Sources/main.swift": {
+    "object": "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/main.swift.o",
+    "swiftmodule": "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/main.swiftdeps",
+    "diagnostics": "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/main.dia"
+  }
+}

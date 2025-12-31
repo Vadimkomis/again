@@ -1,0 +1,281 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.AgainStatusBar-arm64-apple-macosx26.0-release.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/sources",
+      "importPath" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/vadimkomisarchik/Development/again/statusbar/Sources/AppDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vadimkomisarchik/Development/again/statusbar/Sources/StatusBarController.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vadimkomisarchik/Development/again/statusbar/Sources/main.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "AgainStatusBar",
+      "moduleOutputPath" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/Modules/AgainStatusBar.swiftmodule",
+      "objects" : [
+        "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/AppDelegate.swift.o",
+        "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/StatusBarController.swift.o",
+        "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/main.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-whole-module-optimization",
+        "-num-threads",
+        "12",
+        "-serialize-diagnostics",
+        "-O",
+        "-j12",
+        "-DSWIFT_PACKAGE",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "AgainStatusBar_main",
+        "-swift-version",
+        "5",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "statusbar"
+      ],
+      "outputFileMapPath" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/AppDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/StatusBarController.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/main.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/Modules/AgainStatusBar.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/vadimkomisarchik/Development/again/statusbar/Sources/AppDelegate.swift",
+        "/Users/vadimkomisarchik/Development/again/statusbar/Sources/StatusBarController.swift",
+        "/Users/vadimkomisarchik/Development/again/statusbar/Sources/main.swift"
+      ],
+      "tempsPath" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build",
+      "wholeModuleOptimization" : true
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "AgainStatusBar" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "AgainStatusBar",
+      "-package-name",
+      "statusbar",
+      "-c",
+      "/Users/vadimkomisarchik/Development/again/statusbar/Sources/AppDelegate.swift",
+      "/Users/vadimkomisarchik/Development/again/statusbar/Sources/StatusBarController.swift",
+      "/Users/vadimkomisarchik/Development/again/statusbar/Sources/main.swift",
+      "-I",
+      "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/Modules",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-whole-module-optimization",
+      "-num-threads",
+      "12",
+      "-serialize-diagnostics",
+      "-O",
+      "-j12",
+      "-DSWIFT_PACKAGE",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "AgainStatusBar_main",
+      "-swift-version",
+      "5",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "statusbar",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "AgainStatusBar" : [
+
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vadimkomisarchik/Development/again/statusbar/Sources/AppDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vadimkomisarchik/Development/again/statusbar/Sources/StatusBarController.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vadimkomisarchik/Development/again/statusbar/Sources/main.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/sources"
+    },
+    "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/again-statusbar.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/AppDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/StatusBarController.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/AgainStatusBar.build/main.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/again-statusbar.product/Objects.LinkFileList"
+    },
+    "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/swift-version--58304C5D6DBC2206.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/vadimkomisarchik/Development/again/statusbar/.build/arm64-apple-macosx/release/swift-version--58304C5D6DBC2206.txt"
+    }
+  }
+}

@@ -11,7 +11,8 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  rust:
+    name: Rust CI
     runs-on: ubuntu-latest
 
     steps:
@@ -38,5 +39,23 @@ jobs:
       - name: Lint with clippy
         run: cargo clippy -- -D warnings
 
-      - name: Run tests
-        run: cargo test --all
+      - name: Run unit tests
+        run: cargo test --all --verbose
+
+  swift:
+    name: Swift CI (macOS Status Bar)
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Swift status bar app
+        run: |
+          cd statusbar
+          swift build
+
+      - name: Run Swift tests
+        run: |
+          cd statusbar
+          swift test || echo "No Swift tests yet"

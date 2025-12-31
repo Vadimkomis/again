@@ -2,6 +2,11 @@
 
 A CLI tool that analyzes your shell history to surface the commands you run again and again.
 
+## Agent Behavior
+
+- **Implement without asking**: When making suggestions or improvements, implement them directly without asking for permission. Just do it.
+- **Always add tests**: Add unit tests for all modified code and all new code. No exceptions.
+
 ## Quick Reference
 
 ```bash
@@ -17,6 +22,9 @@ cargo fmt                  # Apply formatting
 ```
 src/
 └── main.rs    # Single-file CLI application
+statusbar/
+├── Package.swift
+└── Sources/AgainStatusBar   # Swift AppKit menu bar wrapper
 ```
 
 The codebase is intentionally minimal. Key components:
@@ -58,8 +66,10 @@ Keep dependencies minimal. Justify any new additions.
 ## Testing
 
 **Required workflow:**
-1. After modifying, adding, or deleting any logic, write or update corresponding tests
-2. After committing changes, run `cargo test` locally to verify everything passes
+1. After modifying, adding, or deleting any logic, write or update corresponding tests. This is mandatory—no code changes without corresponding test changes.
+2. All new functions must have unit tests covering typical cases and edge cases
+3. All modified functions must have their tests updated to reflect the changes
+4. After committing changes, run `cargo test` locally to verify everything passes
 
 When adding features, include tests:
 
@@ -98,3 +108,8 @@ mod tests {
 1. Add `--format` flag to `Cli`
 2. Create separate print function (e.g., `print_json()`)
 3. Dispatch in `main()` based on format selection
+
+### Shipping the Swift status bar wrapper
+1. Build via `cd statusbar && swift build`
+2. Run with `swift run again-statusbar`
+3. The wrapper shells out to the installed `again` binary (`cargo install --path .`)
