@@ -53,6 +53,7 @@ final class StatusBarController: NSObject {
     private var refreshTimer: Timer?
     private let backgroundQueue = DispatchQueue(label: "AgainStatusBar.refresh", qos: .utility)
     private let refreshInterval: TimeInterval = 60 * 5
+    private let hotkeyManager = HotkeyManager()
 
     override init() {
         self.statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -62,7 +63,7 @@ final class StatusBarController: NSObject {
             button.imagePosition = .imageOnly
             button.imageScaling = .scaleProportionallyDown
             button.title = ""
-            button.toolTip = "Again"
+            button.toolTip = "Again (⌘⇧A)"
         }
         self.statusItem.menu = NSMenu()
         self.refreshMenu()
@@ -72,11 +73,25 @@ final class StatusBarController: NSObject {
             block: { [weak self] _ in
                 self?.refreshMenu()
             })
+        self.registerHotkey()
     }
 
     func invalidate() {
         self.refreshTimer?.invalidate()
         self.refreshTimer = nil
+        self.hotkeyManager.unregister()
+    }
+
+    private func registerHotkey() {
+        hotkeyManager.register { [weak self] in
+            self?.showMenu()
+        }
+    }
+
+    private func showMenu() {
+        guard let button = statusItem.button else { return }
+        // Programmatically trigger the button click to show the menu
+        button.performClick(nil)
     }
 
     private func refreshMenu() {
